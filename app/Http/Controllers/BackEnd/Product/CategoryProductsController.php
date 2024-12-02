@@ -73,4 +73,12 @@ class CategoryProductsController extends Controller
         $all_category_products = DB::table('tbl_category_products')->get();
         return view($this->backendPath.$this->views.'index')->with('data', compact('all_category_products'));
     }
+
+    public function update(Request $request){
+        $data = $request->query();
+        $id = $data['id'];
+        $all_category_products = DB::table('tbl_category_products')->where('category_id', $id)->get(); 
+        session()->put('message', '');
+        return view($this->backendPath.$this->views.'index')->with('data', compact('all_category_products'));
+    }
 }

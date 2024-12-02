@@ -40,3 +40,11 @@ Route::post('/save-category-products.html', [App\Http\Controllers\BackEnd\Produc
 Route::get('/unactive-category-products.html', [App\Http\Controllers\BackEnd\Product\CategoryProductsController::class, 'inactive'])->name('ROUTE_UNACTIVE_CATEGORY_PRODUCTS');
 Route::get('/active-category-products.html', [App\Http\Controllers\BackEnd\Product\CategoryProductsController::class, 'active'])->name('ROUTE_ACTIVE_CATEGORY_PRODUCTS');
 // End STATUS Category Products
+
+// Begin Update cate product
+Route::get('/update-category-products.html', [App\Http\Controllers\BackEnd\Product\CategoryProductsController::class, 'update'])->name('ROUTE_UPDATE_CATEGORY_PRODUCTS_DASHBOARD_PAGE');
+// End Update cate product
+
+// Begin Deletecate product
+Route::get('/delete-category-products.html', [App\Http\Controllers\BackEnd\Product\CategoryProductsController::class, 'delete'])->name('ROUTE_DELETE_CATEGORY_PRODUCTS_DASHBOARD_PAGE');
+// End Delete cate product

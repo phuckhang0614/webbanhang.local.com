@@ -77,8 +77,10 @@
 
                     <!-- Các hành động -->
                     <td>
-                        <a href="#" class="active" ui-toggle-class="">
+                        <a href="{{ route('ROUTE_UPDATE_CATEGORY_PRODUCTS_DASHBOARD_PAGE', ['category_products_id' => $cate_pro->category_id]) }}" class="active styling edit" ui-toggle-class="">
                             <i class="fa fa-check fa-pencil-square-o text-success text-active"></i>
+                        </a>
+                        <a href="{{ route('ROUTE_DELETE_CATEGORY_PRODUCTS_DASHBOARD_PAGE', ['category_products_id' => $cate_pro->category_id]) }}" class="active styling edit">
                             <i class="fa fa-times text-danger text"></i>
                         </a>
                     </td>

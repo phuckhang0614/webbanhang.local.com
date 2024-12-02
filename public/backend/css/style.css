@@ -3167,3 +3167,15 @@ span.fa-thumb-styling.fa.fa-thumbs-up {
     color: green;
 }
 /*End fa thumbs-up*/
+
+/* Begin Update icon*/
+.fa.fa-check.fa-pencil-square-o.text-success.text-active {
+    font-size: 20px;
+}
+/* End Update icon*/
+
+/* Begin Delete icon*/
+.fa.fa-times.text-danger.text {
+    font-size: 20px;
+}
+/* End Delete icon*/
