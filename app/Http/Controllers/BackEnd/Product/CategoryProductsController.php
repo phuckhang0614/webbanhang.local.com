@@ -77,8 +77,17 @@ class CategoryProductsController extends Controller
     public function update(Request $request){
         $data = $request->query();
         $id = $data['id'];
-        $update_category_products = DB::table('tbl_category_products')->where('category_id', $id)->get(); 
-        $manager_category_products = view($this->backendPath.$this->views.'update_category_products')->with('update_category_products', $update_category_products);
-        return view($this->backendPath.'admin_layout')->with($this->backendPath.$this->views.'update_category_products', $manager_category_products);
+        $updateCategoryProducts = DB::table('tbl_category_products')->where('category_id', $id)->get();
+
+        return view($this->backendPath.$this->views.'update_category_products',['update_category_products'=>$updateCategoryProducts]);
+    }
+    public function update_category(Request $request){
+    $id = $request->category_id;
+    $data = array();
+    $data['category_name'] = $request->category_products_name;
+    $data['category_description'] = $request->category_products_description;
+    DB::table('tbl_category_products')->where('category_id', $id)->update($data);
+    session()->put('message', 'Cập nhật danh mục thành công');
+    return view($this->backendPath.$this->views.'index', ['cateProducts'=>$cateProducts]);
     }
 }

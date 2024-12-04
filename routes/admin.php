@@ -43,6 +43,7 @@ Route::get('/active-category-products.html', [App\Http\Controllers\BackEnd\Produ
 
 // Begin Update cate product
 Route::get('/update-category-products.html', [App\Http\Controllers\BackEnd\Product\CategoryProductsController::class, 'update'])->name('ROUTE_UPDATE_CATEGORY_PRODUCTS_DASHBOARD_PAGE');
+Route::post('/update-products.html', [App\Http\Controllers\BackEnd\Product\CategoryProductsController::class, 'update_category'])->name('ROUTE_UPDATE_PRODUCTS');
 // End Update cate product
 
 // Begin Deletecate product
