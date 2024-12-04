@@ -14,13 +14,13 @@
                                 }
                             ?>
                         <div class="panel-body">
-                        @foreach($all_category_products as $key => $update_value)
+                        @foreach($update_category_products as $key => $update_value)
                             <div class="position-center">
                                 <form role="form" action="{{ route('ROUTE_UPDATE_CATEGORY_PRODUCTS_DASHBOARD_PAGE') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="Input_Products_Name">Tên danh mục</label>
-                                    <input type="text" value="{{ $update_value->category_name}}" name="category_products_name" class="form-control" id="Input_Products_Name" placeholder="Tên danh mục">
+                                    <input type="text" value="{{$update_value->category_name}}" name="category_products_name" class="form-control" id="Input_Products_Name" placeholder="Tên danh mục">
                                 </div>
                                 <div class="form-group">
                                     <label  for="Input_Products_Description">Mô tả danh mục</label>

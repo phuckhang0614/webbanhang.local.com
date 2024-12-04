@@ -14,7 +14,7 @@ class CategoryProductsController extends Controller
     private $views = 'cateproduct.';
 
     public function add(){
-    	return view($this->backendPath.$this->views.'.add_category_products');
+    	return view($this->backendPath.'add_category_products');
     }
 
     public function index(){
@@ -77,8 +77,8 @@ class CategoryProductsController extends Controller
     public function update(Request $request){
         $data = $request->query();
         $id = $data['id'];
-        $all_category_products = DB::table('tbl_category_products')->where('category_id', $id)->get(); 
-        session()->put('message', '');
-        return view($this->backendPath.$this->views.'index')->with('data', compact('all_category_products'));
+        $update_category_products = DB::table('tbl_category_products')->where('category_id', $id)->get(); 
+        $manager_category_products = view($this->backendPath.$this->views.'update_category_products')->with('update_category_products', $update_category_products);
+        return view($this->backendPath.'admin_layout')->with($this->backendPath.$this->views.'update_category_products', $manager_category_products);
     }
 }
