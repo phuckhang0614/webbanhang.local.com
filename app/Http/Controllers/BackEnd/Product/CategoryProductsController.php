@@ -81,13 +81,26 @@ class CategoryProductsController extends Controller
 
         return view($this->backendPath.$this->views.'update_category_products',['update_category_products'=>$updateCategoryProducts]);
     }
+
     public function update_category(Request $request){
-    $id = $request->category_id;
-    $data = array();
-    $data['category_name'] = $request->category_products_name;
-    $data['category_description'] = $request->category_products_description;
-    DB::table('tbl_category_products')->where('category_id', $id)->update($data);
-    session()->put('message', 'Cập nhật danh mục thành công');
-    return view($this->backendPath.$this->views.'index', ['cateProducts'=>$cateProducts]);
+        $data = array();
+        $data['category_name'] = $request->category_products_name;
+        $data['category_description'] = $request->category_products_description;
+        // id
+        $data_id = $request->query();
+        $id = $data_id['id'];
+        // 
+        $successMsg = 'Cập nhật danh mục thành công';
+        DB::table('tbl_category_products')->where('category_id', $id)->update($data);
+        session()->put('message', 'Cập nhật danh mục sản phẩm thành công');
+        return redirect()->route('ROUTE_ALL_CATEGORY_PRODUCTS_DASHBOARD_PAGE');
+    }
+
+    public function delete(Request $request){
+        $data_id = $request->query();
+        $id = $data_id['id'];
+        DB::table('tbl_category_products')->where('category_id', $id)->delete();
+        session()->put('message', 'Xóa danh mục sản phẩm thành công');
+        return redirect()->route('ROUTE_ALL_CATEGORY_PRODUCTS_DASHBOARD_PAGE'); 
     }
 }

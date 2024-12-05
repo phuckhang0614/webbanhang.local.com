@@ -16,7 +16,7 @@
                         <div class="panel-body">
                         @foreach($update_category_products as $key => $update_value)
                             <div class="position-center">
-                                <form role="form" action="{{ route('ROUTE_UPDATE_PRODUCTS',['category_products_id' => $update_value->category_id])}}" method="POST">
+                                <form role="form" action="{{ route('ROUTE_UPDATE_PRODUCTS',['id' => $update_value->category_id]) }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="Input_Products_Name">Tên danh mục</label>

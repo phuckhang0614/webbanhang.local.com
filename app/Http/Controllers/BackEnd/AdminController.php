@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function admin(){
     	return view('backend.admin_login');
     }
     public function show_dashboard(){

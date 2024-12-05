@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Run php artisan optimize
 
 // Begin Route admin page
-Route::get('/admin.html', [App\Http\Controllers\BackEnd\AdminController::class, 'index'])->name('ROUTE_ADMIN_PAGE');
+Route::get('/admin.html', [App\Http\Controllers\BackEnd\AdminController::class, 'admin'])->name('ROUTE_ADMIN_PAGE');
 //end Route admin page
 
 // Begin Route dashboard page
@@ -46,6 +46,6 @@ Route::get('/update-category-products.html', [App\Http\Controllers\BackEnd\Produ
 Route::post('/update-products.html', [App\Http\Controllers\BackEnd\Product\CategoryProductsController::class, 'update_category'])->name('ROUTE_UPDATE_PRODUCTS');
 // End Update cate product
 
-// Begin Deletecate product
+// Begin Deletete product
 Route::get('/delete-category-products.html', [App\Http\Controllers\BackEnd\Product\CategoryProductsController::class, 'delete'])->name('ROUTE_DELETE_CATEGORY_PRODUCTS_DASHBOARD_PAGE');
 // End Delete cate product
