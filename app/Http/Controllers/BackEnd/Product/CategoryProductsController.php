@@ -14,7 +14,7 @@ class CategoryProductsController extends Controller
     private $views = 'cateproduct.';
 
     public function add(){
-    	return view($this->backendPath.'add_category_products');
+    	return view($this->backendPath.$this->views.'add_category_products');
     }
 
     public function index(){
@@ -31,7 +31,7 @@ class CategoryProductsController extends Controller
 
         DB::table('tbl_category_products')->insert($data);
         session()->put('message', 'Thêm danh mục thành công');
-        return view('backend.add_category_products');
+        return view($this->backendPath.$this->views.'add_category_products');
     }
 
     public function active(Request $request){
@@ -74,7 +74,7 @@ class CategoryProductsController extends Controller
         return view($this->backendPath.$this->views.'index')->with('data', compact('all_category_products'));
     }
 
-    public function update(Request $request){
+    public function edit(Request $request){
         $data = $request->query();
         $id = $data['id'];
         $updateCategoryProducts = DB::table('tbl_category_products')->where('category_id', $id)->get();

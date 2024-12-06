@@ -90,7 +90,7 @@
 
                       <!-- Các hành động -->
                       <td>
-                          <a href="{{ route('ROUTE_UPDATE_CATEGORY_PRODUCTS_DASHBOARD_PAGE', ['id' => $item->category_id]) }}" class="active styling edit" ui-toggle-class="">
+                          <a href="{{ route('ROUTE_EDIT_CATEGORY_PRODUCTS_DASHBOARD_PAGE', ['id' => $item->category_id]) }}" class="active styling edit" ui-toggle-class="">
                               <i class="fa fa-check fa-pencil-square-o text-success text-active"></i>
                           </a>
                           <a onclick="return confirm('Are you sure to delete?');" href="{{ route('ROUTE_DELETE_CATEGORY_PRODUCTS_DASHBOARD_PAGE', ['id' => $item->category_id]) }}" class="active styling edit">
