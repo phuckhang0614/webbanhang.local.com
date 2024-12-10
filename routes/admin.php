@@ -72,12 +72,40 @@ use Illuminate\Support\Facades\Route;
 	Route::get('/active-brand-products.html', [App\Http\Controllers\BackEnd\Product\BrandController::class, 'active_brand'])->name('ROUTE_ACTIVE_BRAND');
 		// End STATUS brand
 
-		// Begin Update cate product
+		// Begin Update brand product
 	Route::get('/edit-brand-products.html', [App\Http\Controllers\BackEnd\Product\BrandController::class, 'edit_brand'])->name('ROUTE_EDIT_BRAND_PRODUCTS');
 	Route::post('/update-brand-products.html', [App\Http\Controllers\BackEnd\Product\BrandController::class, 'update_brand'])->name('ROUTE_UPDATE_BRAND_PRODUCTS');
-		// End Update cate product
+		// End Update brand product
 
 		// Begin Deletete product
 	Route::get('/delete-brand-products.html', [App\Http\Controllers\BackEnd\Product\BrandController::class, 'delete_brand'])->name('ROUTE_DELETE_BRAND_PRODUCTS');
-	// End Delete cate product
+	// End Delete brand product
 // End route Brand
+
+// Begin route Products
+	// Begin add products
+	Route::get('/all-products.html', [App\Http\Controllers\BackEnd\Product\ProductsController::class, 'index_products'])->name('ROUTE_ALL_PRODUCTS');
+		// End adđ products
+
+		// Begin all products
+	Route::get('/add-products.html', [App\Http\Controllers\BackEnd\Product\ProductsController::class, 'add_products'])->name('ROUTE_ADD_PRODUCTS');
+		// End all products 
+
+		// Begin Save products
+	Route::post('/save-products.html', [App\Http\Controllers\BackEnd\Product\ProductsController::class, 'save_products'])->name('ROUTE_SAVE_PRODUCTS');
+		// End Save products
+
+	// 	// Begin STATUS products
+	// Route::get('/unactive-products.html', [App\Http\Controllers\BackEnd\Product\ProductsController::class, 'inactive_products'])->name('ROUTE_UNACTIVE_PRODUCTS');
+	// Route::get('/active-products.html', [App\Http\Controllers\BackEnd\Product\ProductsController::class, 'active_products'])->name('ROUTE_ACTIVE_PRODUCTS');
+	// 	// End STATUS products
+
+	// 	// Begin Update products
+	// Route::get('/edit-products.html', [App\Http\Controllers\BackEnd\Product\ProductsController::class, 'edit_products'])->name('ROUTE_EDIT_PRODUCTS');
+	// Route::post('/update-products.html', [App\Http\Controllers\BackEnd\Product\ProductsController::class, 'update_products'])->name('ROUTE_UPDATE_PRODUCTS');
+	// 	// End Update products
+
+	// 	// Begin Deletete products
+	// Route::get('/delete-products.html', [App\Http\Controllers\BackEnd\Product\ProductsController::class, 'delete_products'])->name('ROUTE_DELETE_PRODUCTS');
+	// End Delete products
+// End route Products
