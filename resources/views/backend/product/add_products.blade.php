@@ -15,7 +15,7 @@
 								}
 							?>
                             <div class="position-center">
-                                <form role="form" action="{{ route('ROUTE_SAVE_PRODUCTS') }}" method="POST">
+                                <form role="form" action="{{ route('ROUTE_SAVE_PRODUCTS') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="Input_Products_Name">Tên sản phẩm</label>
@@ -39,24 +39,26 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="Select_Products_Options_Display">Danh mục</label>
-                                        <select name="brand_products_status" class="form-control input-sm m-bot15">
-                                            <option value="0" >PC</option>
-                                            <option value="1" >Laptop</option>
+                                        <select name="products_cate" class="form-control input-sm m-bot15">
+                                            @foreach($cate_products as $key => $cate);
+                                                <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
+                                            @endforeach
                                         </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="Select_Products_Options_Display">Thương hiệu</label>
-                                        <select name="brand_products_status" class="form-control input-sm m-bot15">
-                                            <option value="0" >Dell</option>
-                                            <option value="1" >Hp</option>
+                                        <select name="products_brand" class="form-control input-sm m-bot15">
+                                            @foreach($brand_products as $key => $brand);
+                                                <option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+                                            @endforeach
                                         </select>
                                 </div>
                                 <div class="form-group">
-                                	<label for="Select_Products_Options_Display">Hiển thị</label>
-	                                    <select name="brand_products_status" class="form-control input-sm m-bot15">
-			                                <option value="0" >Ẩn</option>
-			                                <option value="1" >Hiển thị</option>
-			                            </select>
+                                    <label for="Select_Products_Options_Display">Hiển thị</label>
+                                        <select name="products_status" class="form-control input-sm m-bot15">
+                                            <option value="0" >Ẩn</option>
+                                            <option value="1" >Hiển thị</option>
+                                        </select>
                                 </div>
                                 <button type="submit" name="add_category_products" class="btn btn-info">Thêm sản phẩm</button>
                             </form>

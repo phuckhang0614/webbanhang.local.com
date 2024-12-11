@@ -14,24 +14,43 @@ class ProductsController extends Controller
     private $views = 'product.';
 
     public function add_products(){
-    	return view($this->backendPath.$this->views.'add_products');
+        $cate_products = DB::table('tbl_category_products')->orderby('category_id','desc')->get();
+        $brand_products = DB::table('tbl_brand')->orderby('brand_id','desc')->get();  
+    	return view($this->backendPath.$this->views.'add_products')->with('cate_products',$cate_products)->with('brand_products', $brand_products);
     }
 
     public function index_products(){
-        $all_products_products = DB::table('tbl_products')->get(); 
+        $all_products = DB::table('tbl_products')->get(); 
         session()->put('message', '');
     	return view($this->backendPath.$this->views.'index_products')->with('data', compact('all_products'));
     }
 
     public function save_products(Request $request){
         $data = array();
-        $data['products_name'] = $request->products_products_name;
-        $data['products_description'] = $request->products_products_description;
-        $data['products_status'] = $request->products_products_status;
-
+        $data['products_name'] = $request->products_name;
+        $data['products_price'] = $request->products_price;
+        $data['products_description'] = $request->products_description;
+        $data['products_content'] = $request->products_content;
+        $data['category_id'] = $request->products_cate;
+        $data['brand_id'] = $request->products_brand;
+        $data['products_status'] = $request->products_status;
+        $data['products_image'] = $request->products_image;
+        // hinh anh
+        $get_image = $request->file('products_image');
+        if($get_image){
+            $get_name_image = $get_name->getClientOriginalName();
+            $name_img = current(explode('.', $get_name_image));
+            $new_img = $name_img.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move('public/upload/products',$new_img);
+            $data['products_image'] = $new_img;
+            DB::table('tbl_products')->insert($data);
+            session()->put('message', 'Thêm sản phẩm thành công');
+            return redirect()->route('ROUTE_ALL_PRODUCTS');
+        }
+        $data['products_image'] = ''; 
         DB::table('tbl_products')->insert($data);
-        session()->put('message', 'Thêm danh mục thành công');
-        return view($this->backendPath.$this->views.'add_products');
+        session()->put('message', 'Thêm sản phẩm thành công');
+        return redirect()->route('ROUTE_ALL_PRODUCTS');
     }
 
     // public function active_products(Request $request){
